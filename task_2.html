@@ -1,0 +1,74 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+
+</head>
+<body>
+	<div id='fram'>
+		<div>
+			<p>Исходное положение:</p>
+			<input id="da" type="text" value=""  size="2">
+		</div>
+		<div></br>
+			<input type="button" value='Ok' onclick="Ok()" > 
+		</div>
+<script>
+
+	function Ok() {
+			
+			var posit = document.getElementById("da").value;;
+	
+
+//сгенерируем поле		
+			var abc = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+
+			var gener = [];
+
+
+			for (let i=0; i<abc.length; i++) {
+
+				for (var j = 1; j < 9; j++) {
+
+					var gener=(gener +( abc[i] + j )  + ",");
+
+ 
+				}
+			}
+            var board = [];
+			var board = gener.split(",");
+
+//найдем индекс позиции ходов
+            
+			var q = board.indexOf(posit);
+			var k = q+10;
+			var l = q-10;
+			var y = q-6;
+			var x = q+6;
+			var p = q+15;
+			var t = q-15;
+			var r = q+17;
+			var v = q-17;
+
+
+// ищем положительные индексы по расчету
+			var positive= [];
+			var ind = [v,t,l,y,x,k,p,r];   
+				for(var i = 0; i < ind.length; i++) {
+					if (ind[i] >= 0 && ind[i] < 64 ) {
+						var positive =  positive + (ind[i] + ' ');
+					}
+				}
+			var index = positive.split(" ");
+
+//по индексам ищем значения на доске
+			var answer =[];
+				for(var i = 0; i < index.length-1; i++)  {
+					var answer =  answer + board[(index[i])] +' ' ;
+				}
+			var answer=answer.split(" ");
+	alert(answer);
+}
+</script>
+</body>
+</html>
